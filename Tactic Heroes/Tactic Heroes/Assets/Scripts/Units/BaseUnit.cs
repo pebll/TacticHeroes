@@ -9,7 +9,7 @@ public class BaseUnit : MonoBehaviour
     [SerializeField] private Color _playerColor, _enemyColor;
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
-    private void Awake() {
+    private void Start() {
         SetFactionColor();
     }
 

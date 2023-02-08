@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,8 @@ public class UnitManager : MonoBehaviour
     public static UnitManager Instance;
     private List<ScriptableClass> _classes;
     [SerializeField] private GameObject _unitPrefab;
+
+    public BaseUnit SelectedUnit;
 
     void Awake()
     {
@@ -29,5 +32,10 @@ public class UnitManager : MonoBehaviour
             if (i % 2 == 0) unit.Faction = Faction.Enemy;
             
         }
+    }
+
+    public void SetSelectedUnit(BaseUnit unit)
+    {
+        SelectedUnit = unit;
     }
 }

@@ -29,6 +29,18 @@ public abstract class Tile : MonoBehaviour
     {
         if (Gamemanager.Instance.GameState != GameState.ChooseActions) return;
 
+        if(OccupiedUnit != null)
+        {
+            if (OccupiedUnit.Faction == Faction.Player)
+            {
+                UnitManager.Instance.SetSelectedUnit(OccupiedUnit);        
+            }
+            else
+            {
+
+            }
+        }
+
         
     }
 }

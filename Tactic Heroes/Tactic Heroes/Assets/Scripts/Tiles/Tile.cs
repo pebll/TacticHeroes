@@ -24,4 +24,11 @@ public abstract class Tile : MonoBehaviour
     {
         _highlight.SetActive(false);
     }
+
+    void OnMouseDown()
+    {
+        if (Gamemanager.Instance.GameState != GameState.ChooseActions) return;
+
+        
+    }
 }

@@ -14,21 +14,20 @@ public class UnitManager : MonoBehaviour
         Instance = this;
         _classes = Resources.LoadAll<ScriptableClass>("ScriptableClasses").ToList();
     }
-    
-    public void SpawnUnits(){
+
+    public void SpawnUnits()
+    {
         //temporary
-        var count = 2;
+        var count = 4;
         for (int i = 0; i < count; i++)
         {
             var unitObject = Instantiate(_unitPrefab);
             var randomSpawnTile = GridManager.Instance.GetRandomTile();
             BaseUnit unit = unitObject.GetComponent<BaseUnit>();
             unit.MoveToTile(randomSpawnTile);
+            unit.Faction = Faction.Player;
+            if (i % 2 == 0) unit.Faction = Faction.Enemy;
+            
         }
-
     }
-
-    
-
-
 }

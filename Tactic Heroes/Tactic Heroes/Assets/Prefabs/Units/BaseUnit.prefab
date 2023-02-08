@@ -98,3 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OccupiedTile: {fileID: 0}
+  Faction: 0
+  _playerColor: {r: 0.117647074, g: 0.17590879, b: 0.85882354, a: 1}
+  _enemyColor: {r: 0.7830189, g: 0.25193498, b: 0.121885024, a: 1}
+  _spriteRenderer: {fileID: 7709597435895088759}

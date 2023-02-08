@@ -48,3 +48,9 @@ public enum GameState
     ChooseActions = 3,
     ResolveActions = 4
 }
+
+public enum Faction
+{
+    Player = 0,
+    Enemy = 1
+}

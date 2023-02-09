@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class BaseUnit : MonoBehaviour
 {
-    public Tile OccupiedTile;
-    public Faction Faction;
     [SerializeField] private Color _playerColor, _enemyColor;
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
-    private void Start() {
-        SetFactionColor();
-    }
+    public Tile OccupiedTile;
+    public int Team { get; private set; } // Starts by 1
+    public int Health { get; private set; }
+    public bool IsPlayable { get; private set; }
+    public string Name { get; private set; }
+
 
     public void MoveToTile(Tile tile)
     {
@@ -22,10 +23,10 @@ public class BaseUnit : MonoBehaviour
 
     }
 
-    public void SetFactionColor()
+    private void SetTeamColor()
     {
         //temporary
-        if(Faction == Faction.Player)
+        if(Team == 1)
         {
             _spriteRenderer.color = _playerColor;
         }
@@ -34,6 +35,18 @@ public class BaseUnit : MonoBehaviour
             _spriteRenderer.color = _enemyColor;
         }
        
+    }
+
+    public void Init(int team)
+    {
+        Name = gameObject.name;
+        Team = team;
+        if (Team == 1) IsPlayable = true;
+        SetTeamColor();
+
+        Health = 3;
+        // later class
+
     }
 }
 

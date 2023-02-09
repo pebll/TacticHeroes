@@ -1,8 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class UnitManager : MonoBehaviour
 {
@@ -28,14 +27,13 @@ public class UnitManager : MonoBehaviour
             var randomSpawnTile = GridManager.Instance.GetRandomTile();
             BaseUnit unit = unitObject.GetComponent<BaseUnit>();
             unit.MoveToTile(randomSpawnTile);
-            unit.Faction = Faction.Player;
-            if (i % 2 == 0) unit.Faction = Faction.Enemy;
-            
+            unit.Init(Random.Range(1, 3));        
         }
     }
 
     public void SetSelectedUnit(BaseUnit unit)
     {
         SelectedUnit = unit;
+        MenuManager.Instance.SetUnitInfoPanel(unit);
     }
 }

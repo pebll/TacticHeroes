@@ -27,20 +27,25 @@ public abstract class Tile : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (Gamemanager.Instance.GameState != GameState.ChooseActions) return;
+        //if (Gamemanager.Instance.GameState != GameState.ChooseActions) return;
 
         if(OccupiedUnit != null)
         {
-            if (OccupiedUnit.Faction == Faction.Player)
+            if (OccupiedUnit.IsPlayable)
             {
                 UnitManager.Instance.SetSelectedUnit(OccupiedUnit);        
             }
             else
             {
-
+                UnitManager.Instance.SetSelectedUnit(null);
             }
         }
+        else
+        {
+            UnitManager.Instance.SetSelectedUnit(null);
+        }
 
-        
+
     }
 }
+

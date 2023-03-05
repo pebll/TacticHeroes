@@ -7,6 +7,9 @@ public class Gamemanager : MonoBehaviour
 {
     public static Gamemanager Instance;
     public GameState GameState;
+    public int currentTeam = 1;
+   
+   
 
     private void Awake()
     {
@@ -49,8 +52,5 @@ public enum GameState
     ResolveActions = 4
 }
 
-public enum Faction
-{
-    Player = 0,
-    Enemy = 1
-}
+
+

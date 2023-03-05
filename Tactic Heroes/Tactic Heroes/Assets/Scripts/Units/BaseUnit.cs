@@ -7,12 +7,23 @@ public class BaseUnit : MonoBehaviour
     [SerializeField] private Color _playerColor, _enemyColor;
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
+    private int BASE_ACTION_SLOTS_AMOUNT;
+
     public Tile OccupiedTile;
     public int Team { get; private set; } // Starts by 1
     public int Health { get; private set; }
     public bool IsPlayable { get; private set; }
     public string Name { get; private set; }
+    public int actionSlotsAmount { get; private set; }
 
+    public List<BaseAction> Actions { get; private set; }
+
+    public BaseAction[] selectedActions { get; private set; }
+
+    public void ExecuteActions()
+    {
+
+    }
 
     public void MoveToTile(Tile tile)
     {
@@ -41,12 +52,17 @@ public class BaseUnit : MonoBehaviour
     {
         Name = gameObject.name;
         Team = team;
-        if (Team == 1) IsPlayable = true;
+        updatePlayable();
         SetTeamColor();
-
+        actionSlotsAmount = BASE_ACTION_SLOTS_AMOUNT;
         Health = 3;
         // later class
 
+    }
+
+    private void updatePlayable() {      
+        if (Team == Gamemanager.Instance.currentTeam) IsPlayable = true;
+        else IsPlayable = false;
     }
 }
 
